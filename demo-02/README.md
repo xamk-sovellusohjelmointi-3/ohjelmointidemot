@@ -1,12 +1,12 @@
-# Demo 1 - EJS-perusteet
+# Demo 2 - Lomakkeiden käsittely
 
-Tässä demossa tutustutaan palvelinpään renderöintiin (Server-Side Rendering, SSR) ja Templating Engine -tekniikoihin EJS:llä. Lue alla olevat pikaohjeet demon käynnistämiseksi. Sen alla on tarkemmat kirjalliset ohjeet itse demosta.
+Tässä demossa jatketaan edellisestä ja perehdytään, miten lomakkeita käsitellään SSR-sovelluksissa ja miten data liikkuu palvelimen ja tarjotun HTML-tiedoston välillä. Lue alla olevat pikaohjeet demon käynnistämiseksi. Sen alla on tarkemmat kirjalliset ohjeet itse demosta.
 
 ## Pikaohjeet demoon
 
 **0 Varmista, että sinulla on oikea Node-versio**
 
-[.nvmrc -tiedostossa](./.nvmrc) on määritetty demossa vaadittu Noden major versio (24). Ilman tuettua versiota demo ei toimi. Voit käyttää mitä tahansa Node 24 LTS minor-versiota, kunhan se vain on 24 -"sarjaa". 
+[.nvmrc -tiedostossa](./.nvmrc) on määritetty demossa vaadittu Noden major versio (24). Ilman tuettua versiota demo ei toimi. Voit käyttää mitä tahansa Node 24 LTS minor-versiota, kunhan se vain on 24 -"sarjaa".
 
 **1 Asenna versiolukitut Node-paketit/riippuvuudet**
 
@@ -42,9 +42,11 @@ npm run dev
 
 ## Tarkemmat ohjeet
 
-Demon perusidea on täysin sama, mikä opintojakson opetusvideolla. Rakennetaan Express-palvelinsovellus, joka tarjoilee templating enginellä generoidut HTML-tiedostot suoraan palvelimelta ilman tarvetta selaimen JavaScript-tuelle. Templating -moottorina käytetään [EJS:ää](https://ejs.co/ "https://ejs.co/"). Demossa rakennetaan Sovellusohjelmointi 2 -opintojaksolta tuttu Ostoslista-sovelluksen käyttöliittymä ilman CRUD-toiminnallisuuksia. Ainoa toiminnallinen ominaisuus on ostosten haku Prisma-tietokannasta.
+Demon perusidea on täysin sama, mikä opintojakson opetusvideolla. Rakennetaan Express-palvelinsovellus, joka tarjoilee templating enginellä generoidut HTML-tiedostot suoraan palvelimelta ilman tarvetta selaimen JavaScript-tuelle. Templating -moottorina käytetään [EJS:ää](https://ejs.co/ "https://ejs.co/").
 
-Opintojakson demovideoilla oleviin Node-pakettien versioihin on tullut päivityksiä, jonka takia suoraan videon ohjeiden seuraaminen ei enää toimi. Joudut käyttämään tarkalleen samoja versioita, mitä videoiden demoissa käytetään. Tämä on niin kauan, kunnes saan päivitettyä videot nykyhetkeen.
+Demossa jatketaan ostoslistan rakentamista niin, että EJS-malliin luodaan lomakekentät ostosten tiedojen lähettämiseen ja vastaanottamiseen palvelimen ja tarjoillun HTML-tiedoston välillä. Demo havainnollistaa muutamaa eri tekniikkaa, miten tietoja voidaan lähettää palvelimelle ja näitä samoja tekniikoita käytiin jo Sovellusohjelmointi 2 -opintojaksolla. Muuten palvelintiedostossa olevat koodit ovat samoja kuin aiemmalla demon versiolla. EJS-tiedoston tyylit on päivitetty Bootstrap 5:een.
+
+Opintojakson demovideoilla oleviin Node-pakettien versioihin on tullut päivityksiä, jonka takia suoraan videon ohjeiden seuraaminen ei enää välttämättä toimi. Joudut käyttämään tarkalleen samoja versioita, mitä videoiden demoissa käytetään.
 
 Node-pakettien ajantasaisimmat versiot (syksy 2026) löytyvät tästä projektista ja ne on nyt versiolukittu helpomman ylläpidon ja materiaalien paikkansapitävyyden vuoksi. Jos käytät eri versioita, joudut selvittämään mahdolliset muutokset itse. Projektin rakentaminen itsessään ei logiikan tasolla muutu, mutta muutoksia voi olla erilaisten komentojen nimissä ja tietokannan asentamisessa ja alustuksessa.
 
