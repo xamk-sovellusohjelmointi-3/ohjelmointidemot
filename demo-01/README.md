@@ -40,7 +40,7 @@ Opintojakson demovideoilla oleviin Node-pakettien versioihin on tullut päivityk
 
 Node-pakettien ajantasaisimmat versiot (syksy 2026) löytyvät tästä projektista ja ne on nyt versiolukittu helpomman ylläpidon ja materiaalien paikkansapitävyyden vuoksi. Jos käytät eri versioita, joudut selvittämään mahdolliset muutokset itse. Projektin rakentaminen itsessään ei logiikan tasolla muutu, mutta muutoksia voi olla erilaisten komentojen nimissä ja tietokannan asentamisessa ja alustuksessa.
 
-> [!NOTE] Huomio demosta
+> [!NOTE]
 >
 > Jos olet jo suorittanut vanhemman version demosta 1 itsenäisesti tai tutustunut koodeihin, sinun ei tarvitse palata tähän uudestaan. Tämä on nyt vain rakennettu ajantasaisuuden vuoksi uudelleen. Oppimistehtävässä ei käytetä Prisma-tietokantaa, vaan siinä käsiteltävät tiedot ladataan palvelimelle tiedostona. Prisma on vain tämän ja seuraavan demon kannalta oleellinen työkalu, mutta silti ehkä hyvä päivittää tietoja edelliseltä toteutukselta, koska työkalut ovat päivittyneet.
 >
@@ -50,7 +50,7 @@ Node-pakettien ajantasaisimmat versiot (syksy 2026) löytyvät tästä projektis
 
 Ajantasaiset ja toimivaksi varmistetut ohjeet löydät Prisman sivuilta. Komentoja ajaessa saatat huomata, että jotkin tiedostot generoituvat eri nimillä (esim. prisma7.config.ts vs. prisma.config.ts) tai jotkin koodit ovat erilaisia. Olen varmistanut, että sivuilla olevassa ohjeistuksessa olevat koodit ja komennot ovat toimivia.
 
-> [!WARNING] Huomio Prisma Studiosta
+> [!WARNING]
 >
 > Prisma Studiota ei välttämättä saa käyntiin komennolla:
 >
