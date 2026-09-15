@@ -12,25 +12,33 @@ Tässä demossa tutustutaan palvelinpään renderöintiin (Server-Side Rendering
 
 Asenna projektin riippuvuudet (node_modules) alla olevalla komennolla tavallisen install -komennon sijaan. Tämä siksi, että Node-pakettien versiohallinta on nyt lukittu ja näin asennetaan varmasti samat versiot package-lock.json tiedostosta.
 
-`npm ci`
+```bash
+npm ci
+```
 
 **2 Lisää Prisman ympäristömuuttuja**
 
 Luo demo-kansion juureen uusi `.env` -tiedosto ja lisää sinne seuraava rivi:
 
-`DATABASE_URL="file:./dev.db"`
+```
+DATABASE_URL="file:./dev.db"
+```
 
 **3 Generoi Prisma-tietokanta**
 
 Suorita komento demo-kansion juuressa komentorivillä.
 
-`npx prisma generate`
+```bash
+npx prisma generate
+```
 
 **4 Suorita demosovellus**
 
 Suorita komento demo-kansion juuressa komentorivillä.
 
-`npm run dev`
+```bash
+npm run dev
+```
 
 ## Tarkemmat ohjeet
 
@@ -48,20 +56,26 @@ Node-pakettien ajantasaisimmat versiot (syksy 2026) löytyvät tästä projektis
 
 ### Prisma 7 -ohjeet
 
-Ajantasaiset ja toimivaksi varmistetut ohjeet löydät Prisman sivuilta. Komentoja ajaessa saatat huomata, että jotkin tiedostot generoituvat eri nimillä (esim. prisma7.config.ts vs. prisma.config.ts) tai jotkin koodit ovat erilaisia. Olen varmistanut, että sivuilla olevassa ohjeistuksessa olevat koodit ja komennot ovat toimivia.
+Ajantasaiset ja toimivaksi varmistetut ohjeet löydät [Prisman sivuilta](https://www.prisma.io/docs/v7/prisma-orm/quickstart/sqlite "https://www.prisma.io/docs/v7/prisma-orm/quickstart/sqlite"). Komentoja ajaessa saatat huomata, että jotkin tiedostot generoituvat eri nimillä (esim. prisma7.config.ts vs. prisma.config.ts) tai jotkin koodit ovat erilaisia. Olen varmistanut, että sivuilla olevassa ohjeistuksessa olevat koodit ja komennot ovat toimivia.
 
 > [!WARNING]
 >
 > Prisma Studiota ei välttämättä saa käyntiin komennolla:
 >
-> `npx prisma studio`
+> ```bash
+> npx prisma studio
+> ```
 >
 > tai
 >
-> `npx prisma studio --url file:./dev.db`
+> ```bash
+> npx prisma studio --url file:./dev.db
+> ```
 
 Olen varmistanut tekoälyn kanssa toimivaksi vaihtoehdoksi suorittaa käynnistyskomento:
 
 > [!TIP]
 >
-> `npx prisma studio --url "file://$(pwd)/dev.db"`
+> ```bash
+> npx prisma studio --url "file://$(pwd)/dev.db"
+> ```
