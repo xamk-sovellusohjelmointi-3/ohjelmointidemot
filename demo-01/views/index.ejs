@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+
+        .display-1 {
+            font-size: 24pt;
+        }
+
+        .display-2 {
+            font-size: 20pt;
+        }
+
+    </style>
+    <title>Demo 1</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="display-1">Demo 1: EJS-templatet</h1>
+
+        <h2 class="display-2">Ostoslista</h2>
+
+        <ul class="mb-3 list-group list-group-flush">
+            <% ostokset.forEach((ostos) => { %>
+
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span><%= ostos.tuote %></span>
+                    <button type="button" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash"></i></button>
+                </li>
+            <% }); %>
+        </ul>
+
+        <input type="text" class="mb-3 form-control" placeholder="Kirjoita tuote...">
+
+        <button type="button" class="input-group btn btn-primary btn-sm">Lisää tuote ostoslistaan</button>
+
+    </div>
+</body>
+</html>
