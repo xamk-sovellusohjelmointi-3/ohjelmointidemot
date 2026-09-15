@@ -48,15 +48,8 @@ app.get("/poimittu", async (req : express.Request, res : express.Response) => {
     res.redirect("/");
 });
 
-
 app.get("/", async (req : express.Request, res : express.Response) => {
     let ostokset = await prisma.ostos.findMany();
-    res.render("index", { ostokset : ostokset });
-});
-
-// Käsittelijä palvelimen juureen. Tulostaa views-kansion index.ejs -tiedoston tietokannasta haetuilla ostoksilla
-app.get("/", async (req: Request, res: Response) => {
-    const ostokset = await prisma.ostos.findMany();
     res.render("index", { ostokset : ostokset });
 });
 
