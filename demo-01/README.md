@@ -40,28 +40,28 @@ Opintojakson demovideoilla oleviin Node-pakettien versioihin on tullut päivityk
 
 Node-pakettien ajantasaisimmat versiot (syksy 2026) löytyvät tästä projektista ja ne on nyt versiolukittu helpomman ylläpidon ja materiaalien paikkansapitävyyden vuoksi. Jos käytät eri versioita, joudut selvittämään mahdolliset muutokset itse. Projektin rakentaminen itsessään ei logiikan tasolla muutu, mutta muutoksia voi olla erilaisten komentojen nimissä ja tietokannan asentamisessa ja alustuksessa.
 
->**INFO** Huomio demosta
+> [!NOTE] Huomio demosta
 >
->Jos olet jo suorittanut vanhemman version demosta 1 itsenäisesti tai tutustunut koodeihin, sinun ei tarvitse palata tähän uudestaan. Tämä on nyt vain rakennettu ajantasaisuuden vuoksi uudelleen. Oppimistehtävässä ei käytetä Prisma-tietokantaa, vaan siinä käsiteltävät tiedot ladataan palvelimelle tiedostona. Prisma on vain tämän ja seuraavan demon kannalta oleellinen työkalu, mutta silti ehkä hyvä päivittää tietoja edelliseltä toteutukselta, koska työkalut ovat päivittyneet.
+> Jos olet jo suorittanut vanhemman version demosta 1 itsenäisesti tai tutustunut koodeihin, sinun ei tarvitse palata tähän uudestaan. Tämä on nyt vain rakennettu ajantasaisuuden vuoksi uudelleen. Oppimistehtävässä ei käytetä Prisma-tietokantaa, vaan siinä käsiteltävät tiedot ladataan palvelimelle tiedostona. Prisma on vain tämän ja seuraavan demon kannalta oleellinen työkalu, mutta silti ehkä hyvä päivittää tietoja edelliseltä toteutukselta, koska työkalut ovat päivittyneet.
 >
->Samoin MDL (Material Design Lite) on ollut jo pitkään deprekoituna. Vaihdoin demossa kokonaan tyylikirjaston Bootstrapiksi, koska se on helppoutensa vuoksi erittäin hyvä korvike. Googlen material 3 -tyylejä käyttävät työkalut ovat monimutkaisempia asentaa, eikä esimerkiksi virallinen Material 3 Web -kirjasto ole enää aktiivisessa kehityksessä, vaikka se on viimeisin versio virallisesta Material Design -tyylikirjastosta verkkosovelluksiin demon kaltaisissa tilanteissa. Fullstack frameworkeihin liitettävät kolmannen osapuolen työkalut ovat asia erikseen, mutta niitä ei käsitellä tässä.
+> Samoin MDL (Material Design Lite) on ollut jo pitkään deprekoituna. Vaihdoin demossa kokonaan tyylikirjaston Bootstrapiksi, koska se on helppoutensa vuoksi erittäin hyvä korvike. Googlen material 3 -tyylejä käyttävät työkalut ovat monimutkaisempia asentaa, eikä esimerkiksi virallinen Material 3 Web -kirjasto ole enää aktiivisessa kehityksessä, vaikka se on viimeisin versio virallisesta Material Design -tyylikirjastosta verkkosovelluksiin demon kaltaisissa tilanteissa. Fullstack frameworkeihin liitettävät kolmannen osapuolen työkalut ovat asia erikseen, mutta niitä ei käsitellä tässä.
 
 ### Prisma 7 -ohjeet
 
 Ajantasaiset ja toimivaksi varmistetut ohjeet löydät Prisman sivuilta. Komentoja ajaessa saatat huomata, että jotkin tiedostot generoituvat eri nimillä (esim. prisma7.config.ts vs. prisma.config.ts) tai jotkin koodit ovat erilaisia. Olen varmistanut, että sivuilla olevassa ohjeistuksessa olevat koodit ja komennot ovat toimivia.
 
->**WARNING** Huomio Prisma Studiosta
+> [!WARNING] Huomio Prisma Studiosta
 >
->Prisma Studiota ei välttämättä saa käyntiin komennolla:
+> Prisma Studiota ei välttämättä saa käyntiin komennolla:
 >
->`npx prisma studio`
+> `npx prisma studio`
 >
->tai
+> tai
 >
->`npx prisma studio --url file:./dev.db`
+> `npx prisma studio --url file:./dev.db`
 
 Olen varmistanut tekoälyn kanssa toimivaksi vaihtoehdoksi suorittaa käynnistyskomento:
 
->**SUCCESS**
+> [!TIP]
 >
->`npx prisma studio --url "file://$(pwd)/dev.db"`
+> `npx prisma studio --url "file://$(pwd)/dev.db"`
