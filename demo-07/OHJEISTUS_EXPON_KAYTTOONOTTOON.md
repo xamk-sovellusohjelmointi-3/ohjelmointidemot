@@ -1,10 +1,6 @@
-# Sovellusohjelmointi 3 demot
-
-Syksyllä 2026 päivitetyt ja versiolukitut ohjelmointidemot. Katso demokohtaiset ohjeet demokansion omasta README.md -tiedostosta.
-
 # Ohjeistus Expon käyttöönottoon
 
-Demot 4-7 käyttävät React Native -kehitykseen Expo-sovelluskehystä. Tässä ohjeessa otetaan Expo käyttöön omalla koneella ja sovellusta testataan Android- ja iOS-laitteilla.
+Tässä ohjeessa otetaan Expo käyttöön omalla koneella ja sovellusta testataan Android- ja iOS-laitteilla.
 
 Tiedot on tarkistettu 21.9.2026 Expon dokumentaatiosta ja muutoslokista sekä Applen ja Googlen sovelluskaupoista. Expon tilanne muuttuu nopeasti, erityisesti iOS:n osalta. Jos jokin ei toimi ohjeen mukaan, tarkista ensin [Expon muutosloki](https://expo.dev/changelog). Jos ongelma ei ratkea, ota yhteyttä opettajaan.
 
@@ -139,4 +135,3 @@ Ilmaisella Apple ID:llä on nämä rajoitukset:
 - [Android Developers: Configure hardware acceleration](https://developer.android.com/studio/run/emulator-acceleration)
 - [Apple: Compare memberships](https://developer.apple.com/support/compare-memberships/) ja [Fee waivers](https://developer.apple.com/help/account/membership/fee-waivers/)
 - [Genymotion: Desktop requirements](https://support.genymotion.com/hc/en-us/articles/360005432518-What-are-Genymotion-Desktop-requirements), [Is Genymotion free?](https://support.genymotion.com/hc/en-us/articles/24478777837597-Is-Genymotion-free) ja [Global Settings](https://docs.genymotion.com/desktop/02_Application/)
-
