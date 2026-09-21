@@ -1,41 +1,20 @@
 import { StatusBar } from 'expo-status-bar';
 import { View, Vibration } from 'react-native';
-import { Appbar, Button, List, PaperProvider } from 'react-native-paper';
+import { Appbar, Button, List, MD3LightTheme, PaperProvider } from 'react-native-paper';
 import * as Device from 'expo-device';
 import * as Battery from 'expo-battery';
-import { useEffect, useState } from 'react';
 
 export default function App() {
 
-    const [akkulataus, setAkkulataus] = useState<number>(0);
-    const [latauksessa, setLatauksessa] = useState<string>('');
+    const akkulataus = Battery.useBatteryLevel();
+    const akunTila = Battery.useBatteryState();
 
-    useEffect(() => {
-
-        (async () => {
-            setAkkulataus(await Battery.getBatteryLevelAsync());
-            const tila = await Battery.getBatteryStateAsync();
-            if (tila === Battery.BatteryState.CHARGING || tila === Battery.BatteryState.FULL) {
-                setLatauksessa('Kyllä');
-            } else {
-                setLatauksessa('Ei');
-            }
-        })();
-
-        const latausKuuntelija = Battery.addBatteryStateListener((e: Battery.BatteryStateEvent) => {
-            if (e.batteryState === Battery.BatteryState.CHARGING || e.batteryState === Battery.BatteryState.FULL) {
-                setLatauksessa('Kyllä');
-            } else {
-                setLatauksessa('Ei');
-            }
-        });
-
-        return () => latausKuuntelija.remove();
-
-    }, []);
+    const latauksessa = (akunTila === Battery.BatteryState.CHARGING || akunTila === Battery.BatteryState.FULL)
+        ? 'Kyllä'
+        : 'Ei';
 
     return (
-        <PaperProvider>
+        <PaperProvider theme={MD3LightTheme}>
             <Appbar.Header>
                 <Appbar.Content title="Demo 5: Laitekomponentit" />
                 <Appbar.Action icon="atom" />
@@ -56,7 +35,10 @@ export default function App() {
                     title="Akkutietoja"
                     left={props => <List.Icon {...props} icon="battery" />}
                 >
-                    <List.Item title="Latauksen määrä" description={`${(100 * akkulataus).toFixed(2)} %`} />
+                    <List.Item
+                        title="Latauksen määrä"
+                        description={akkulataus >= 0 ? `${(100 * akkulataus).toFixed(2)} %` : 'Ei saatavilla'}
+                    />
                     <List.Item title="Latauksessa" description={latauksessa} />
                 </List.Accordion>
 
@@ -67,7 +49,7 @@ export default function App() {
                     icon="vibrate"
                 >Värinää!</Button>
 
-                <StatusBar style="auto" />
+                <StatusBar style="dark" />
             </View>
         </PaperProvider>
     );

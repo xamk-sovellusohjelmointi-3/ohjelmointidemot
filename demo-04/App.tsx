@@ -1,17 +1,16 @@
 import { StatusBar } from 'expo-status-bar';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { Button, StyleSheet, Text, TextInput } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function App() {
 
-    const tekstikentta = useRef<TextInput>(null);
+    const [nimi, setNimi] = useState<string>('');
     const [tervehdys, setTervehdys] = useState<string>('');
 
     const sanoHeippa = () => {
-        const nimi = (tekstikentta.current as any)?.value ?? '';
         setTervehdys(`Heippa ${nimi}!`);
-        tekstikentta.current?.clear();
+        setNimi('');
     };
 
     return (
@@ -22,14 +21,10 @@ export default function App() {
             <Text style={styles.alaotsikko}>Hello world</Text>
 
             <TextInput
-                ref={tekstikentta}
                 style={styles.tekstikentta}
                 placeholder="Anna nimesi..."
-                onChangeText={(teksti) => {
-                    if (tekstikentta.current) {
-                        (tekstikentta.current as any).value = teksti;
-                    }
-                }}
+                value={nimi}
+                onChangeText={(teksti) => setNimi(teksti)}
             />
 
             <Button

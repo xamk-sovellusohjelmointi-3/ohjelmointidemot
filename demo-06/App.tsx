@@ -1,11 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
-import { FlatList, Image, StyleSheet } from 'react-native';
-import { Appbar, Card, FAB, PaperProvider, Text } from 'react-native-paper';
+import { FlatList, Image, StyleSheet, View } from 'react-native';
+import { Appbar, Card, FAB, MD3LightTheme, PaperProvider, Text } from 'react-native-paper';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { CameraView, useCameraPermissions, CameraCapturedPicture } from 'expo-camera';
 import { useRef, useState } from 'react';
 
 interface Kuvaustiedot {
-    kuvaustila?: boolean;
+    kuvaustila: boolean;
     virhe: string;
     info: string;
 }
@@ -23,33 +24,35 @@ export default function App() {
         virhe: "",
         info: ""
     });
+    const [kameraValmis, setKameraValmis] = useState<boolean>(false);
     const [kuvat, setKuvat] = useState<OtettuKuva[]>([]);
     const kameraRef = useRef<CameraView>(null);
 
     const kaynnistaKamera = async () => {
-        const lupa = await pyydaKameraLupa();
-        setKuvaustiedot({
-            ...kuvaustiedot,
+        const lupa = kameraLupa?.granted ? kameraLupa : await pyydaKameraLupa();
+        setKameraValmis(false);
+        setKuvaustiedot((edellinen) => ({
+            ...edellinen,
             kuvaustila: lupa.granted,
             virhe: (!lupa.granted) ? "Ei lupaa kameran käyttöön." : ""
-        });
+        }));
     }
 
     const otaKuva = async () => {
 
-        setKuvaustiedot({
-            ...kuvaustiedot,
+        setKuvaustiedot((edellinen) => ({
+            ...edellinen,
             info: "Odota hetki..."
-        });
+        }));
 
         const kuva: CameraCapturedPicture = await kameraRef.current!.takePictureAsync();
 
-        setKuvat([{ uri: kuva.uri, aikaleima: new Date() }, ...kuvat]);
-        setKuvaustiedot({
-            ...kuvaustiedot,
+        setKuvat((edelliset) => [{ uri: kuva.uri, aikaleima: new Date() }, ...edelliset]);
+        setKuvaustiedot((edellinen) => ({
+            ...edellinen,
             kuvaustila: false,
             info: ""
-        });
+        }));
 
     }
 
@@ -71,7 +74,7 @@ export default function App() {
 
                 <FlatList
                     data={kuvat}
-                    keyExtractor={(_, index) => index.toString()}
+                    keyExtractor={(kuva) => kuva.uri}
                     contentContainerStyle={styles.lista}
                     ListEmptyComponent={
                         <Text style={styles.tyhjaLista}>Ei otettuja kuvia.</Text>
@@ -92,40 +95,53 @@ export default function App() {
                     )}
                 />
 
-                <StatusBar style="auto" />
+                <StatusBar style="dark" />
             </>
         );
     }
 
     const kameraNakyma = () => {
         return (
-            <CameraView style={styles.kuvaustila} ref={kameraRef}>
+            <View style={styles.kuvaustila}>
+
+                <CameraView
+                    style={StyleSheet.absoluteFill}
+                    ref={kameraRef}
+                    onCameraReady={() => setKameraValmis(true)}
+                />
 
                 {(Boolean(kuvaustiedot.info))
                     ? <Text style={{ color: "#fff" }}>{kuvaustiedot.info}</Text>
                     : null
                 }
 
-                <FAB
-                    style={styles.nappiOtaKuva}
-                    icon="camera"
-                    label="Ota kuva"
-                    onPress={otaKuva}
-                />
+                <SafeAreaView style={styles.kameranPainikkeet} edges={['bottom']}>
 
-                <FAB
-                    style={styles.nappiSulje}
-                    icon="close"
-                    label="Sulje"
-                    onPress={() => setKuvaustiedot({ ...kuvaustiedot, kuvaustila: false })}
-                />
+                    <FAB
+                        style={styles.nappi}
+                        icon="close"
+                        label="Sulje"
+                        onPress={() => setKuvaustiedot((edellinen) => ({ ...edellinen, kuvaustila: false }))}
+                    />
 
-            </CameraView>
+                    <FAB
+                        style={styles.nappi}
+                        icon="camera"
+                        label="Ota kuva"
+                        disabled={!kameraValmis}
+                        onPress={otaKuva}
+                    />
+
+                </SafeAreaView>
+
+                <StatusBar style="light" />
+
+            </View>
         );
     }
 
     return (
-        <PaperProvider>
+        <PaperProvider theme={MD3LightTheme}>
             {!kuvaustiedot.kuvaustila ? aloitusNakyma() : kameraNakyma()}
         </PaperProvider>
     );
@@ -138,17 +154,16 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-    nappiSulje: {
+    kameranPainikkeet: {
         position: 'absolute',
-        margin: 20,
+        left: 0,
+        right: 0,
         bottom: 0,
-        left: 0
+        flexDirection: 'row',
+        justifyContent: 'space-between',
     },
-    nappiOtaKuva: {
-        position: 'absolute',
+    nappi: {
         margin: 20,
-        bottom: 0,
-        right: 0
     },
     lista: {
         padding: 10,
